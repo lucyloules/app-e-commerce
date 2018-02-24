@@ -1,7 +1,3 @@
-*{
-  margin: 0;
-  padding: 0;
-}
 #flipkart-navbar {
     background-color: #86DDF5;
     color: #FFFFFF;
@@ -121,7 +117,7 @@
 }
 
 .links {
-    color: #000;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -219,15 +215,12 @@
     color: #fff;
 }
 
-
-
 * {
     color: #000 !important;
 }
 
 a:focus,
 a:hover {
-
     color: #FFF88D;
     text-decoration: underline;
 }
@@ -235,92 +228,6 @@ a:hover {
 img[src="assets/images/shopping-cart.png"] {
     width: 1.5em;
 }
-
-.imgOffers{
-  width: 14em;
-  margin-top: 1em;
-}
-.priceOffers{
-  margin-left: 2em;
-  font-size: 1.5em;
-}
-.imgBorder{
-  border: 1px solid black;
-  position: relative;
-  right: 0.50em;
-}
-.imgRight{
-  position: relative;
-  left: 2.5em;
-}
-.offert{
-  position: relative;
-  left: 1em;
-}
-hr{
-  width: 65em;
-}
-.imgBorderTwo{
-  border: 1px solid black;
-  position: relative;
-  right: 0.50em;
-  background: #D8D8D8;
-}
-#advertising{
-  margin-top: 3.5em;
-}
-.imgAdvertising{
-  width: 20em;
-}
-.imgAdvertising2{
-  width: 45em;
-}
-a{
-  text-decoration: none;
-  color: white;
-}
-.backToTop{
-  margin-top: 2em;
-  background-color: #57717C;
-  padding: 1em;
-}
-.container-footer{
-  background-color: #37454B;
-}
-.container-footer a{
-  list-style: none;
-  color: white;
-}
-.container-footer a:first-child{
-  font-size: 1.5em;
-}
-.firstLi{
-  margin-top: 2em;
-}
-.fa-facebook-f, .fa-twitter, .fa-google-plus-g{
-  color: white;
-}
-.fa-facebook-f{
-  position: relative;
-  left: 4.5em;
-}
-.fa-google-plus-g{
-  position: relative;
-  right: 4.5em;
-}
-.cards{
-  background-color: white;
-  margin-top: 3em;
-  width: 16.5em;
-}
-.imgPaypal, .imgVisa, .imgMastercard{
-  width: 4.5em;
-}
-.termsConditions{
-  color: white;
-  margin-top: 2em;
-}
-
 
 .navbarBack {
     background-color: #faffb6 !important;
@@ -391,4 +298,3 @@ box-shadow: 10px -5px 13px -1px rgba(0,0,0,0.75);
     justify-content: center;
     justify-content: space-around;
 }
-
