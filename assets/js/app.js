@@ -35,16 +35,16 @@ fetch('https://api.mercadolibre.com/sites/MLC/search?condition=all&q=all', {
                 let valuesResults = (listCateg.results[i].title);
                 let regex = new RegExp(valueFlip, 'i', 'g');
                 if (regex.test(valuesResults) === true) {
-                    console.log(listCateg.results[i].title);
-                    console.log(listCateg.results[i].price);
-                    console.log(listCateg.results[i].available_quantity);
-                    console.log(listCateg.results[i].thumbnail);
+                    // console.log(listCateg.results[i].title);
+                    // console.log(listCateg.results[i].price);
+                    // console.log(listCateg.results[i].available_quantity);
+                    // console.log(listCateg.results[i].thumbnail);
 
                     let resultsSearchInput = document.querySelector('.resultsSearchInput');
-                    let divResultsInput = document.createElement('div'); 
+                    let divResultsInput = document.createElement('div');
                     divResultsInput.className = 'divResultsInput';
-                    let divImages = document.createElement('div'); 
-                    divImages.className='divImages';
+                    let divImages = document.createElement('div');
+                    divImages.className = 'divImages';
                     let image = document.createElement('img');
                     image.className = 'image';
                     image.setAttribute('src', listCateg.results[i].thumbnail);
@@ -55,7 +55,7 @@ fetch('https://api.mercadolibre.com/sites/MLC/search?condition=all&q=all', {
                     pTitle.appendChild(titleProduc);
                     divTitle = document.createElement('div');
                     divTitle.appendChild(pTitle);
-                    divTitle.className='divTitle';
+                    divTitle.className = 'divTitle';
 
 
                     let priceProduc = document.createTextNode(listCateg.results[i].price);
@@ -70,12 +70,58 @@ fetch('https://api.mercadolibre.com/sites/MLC/search?condition=all&q=all', {
                     divAvailable = document.createElement('div');
                     divAvailable.appendChild(pAvailable);
 
+                    let divButton = document.createElement('div');
+                    let buttonCart = document.createElement('button');
+                    buttonCart.className = 'buttonCart';
+                    buttonCart.appendChild(document.createTextNode('Add to Cart'));
+                    divButton.appendChild(buttonCart);
+                    let itemNumber = document.querySelector('.item-number');
+                
+                let WishList = document.querySelector('.WishList');
 
+                buttonCart.addEventListener('click', function () {
+
+                   
+
+
+                    let numerActual = itemNumber.textContent;
+                    let actual = parseInt(numerActual) + 1;
+                    itemNumber.innerHTML = '';
+                    itemNumber.appendChild(document.createTextNode(actual));
+                })
+
+                let cart = document.querySelector('.cart');
+                cart.addEventListener('click', function(){
+
+                })
+                    
+
+                    let heart = document.createElement('img');
+                    heart.setAttribute('src', 'assets/images/nolike.png');
+                    let divHeart = document.createElement('div');
+                    divHeart.appendChild(heart);
                     divResultsInput.appendChild(divImages);
                     divResultsInput.appendChild(divTitle);
                     divResultsInput.appendChild(divPrice);
                     divResultsInput.appendChild(divAvailable);
+                    divResultsInput.appendChild(divButton);
+                    divResultsInput.appendChild(divHeart);
+
+
                     resultsSearchInput.appendChild(divResultsInput);
+
+                    divHeart.addEventListener('click', function(){
+                        heart.setAttribute('src', 'assets/images/like.png');
+                        let element = event.target.parentNode.parentNode.firstChild.nextSibling.firstChild.textContent;
+                        let itemNumber = document.querySelector('.item-number');
+                        let divWish = document.createElement('div');
+                        let textDivWish = document.createElement('p');
+    
+                        let text = document.createTextNode(element);
+                        textDivWish.appendChild(text);
+                        divWish.appendChild(textDivWish);
+                        WishList.appendChild(divWish);
+                    })
 
 
                 }
@@ -137,47 +183,76 @@ categoriesSelect.addEventListener('change', function () {
             console.log(info);
 
             for (let k = 0; k < info.results.length; k++) {
-                console.log(info.results[k].price);
-                console.log(info.results[k].title);
-                console.log(info.results[k].available_quantity);
-                console.log(info.results[k].thumbnail);
+                // console.log(info.results[k].price);
+                // console.log(info.results[k].title);
+                // console.log(info.results[k].available_quantity);
+                // console.log(info.results[k].thumbnail);
 
                 let resultsList = document.querySelector('.resultsList');
-                    let divResultsInput = document.createElement('div'); 
-                    divResultsInput.className = 'divResultsInput';
-                    let divImages = document.createElement('div'); 
-                    divImages.className='divImages';
-                    let image = document.createElement('img');
-                    image.className = 'image';
-                    image.setAttribute('src', info.results[k].thumbnail);
-                    divImages.appendChild(image);
+                let divResultsInput = document.createElement('div');
+                divResultsInput.className = 'divResultsInput';
+                let divImages = document.createElement('div');
+                divImages.className = 'divImages';
+                let image = document.createElement('img');
+                image.className = 'image';
+                image.setAttribute('src', info.results[k].thumbnail);
+                divImages.appendChild(image);
 
-                    let titleProduc = document.createTextNode(info.results[k].title);
-                    let pTitle = document.createElement('p');
-                    pTitle.appendChild(titleProduc);
-                    divTitle = document.createElement('div');
-                    divTitle.appendChild(pTitle);
-                    divTitle.className='divTitle';
-
-
-                    let priceProduc = document.createTextNode(info.results[k].price);
-                    let pPrice = document.createElement('p');
-                    pPrice.appendChild(priceProduc);
-                    divPrice = document.createElement('div');
-                    divPrice.appendChild(pPrice);
-
-                    let pAvailable = document.createElement('p');
-                    let availableProduc = document.createTextNode(info.results[k].available_quantity);
-                    pAvailable.appendChild(availableProduc);
-                    divAvailable = document.createElement('div');
-                    divAvailable.appendChild(pAvailable);
+                let titleProduc = document.createTextNode(info.results[k].title);
+                let pTitle = document.createElement('p');
+                pTitle.appendChild(titleProduc);
+                divTitle = document.createElement('div');
+                divTitle.appendChild(pTitle);
+                divTitle.className = 'divTitle';
 
 
-                    divResultsInput.appendChild(divImages);
-                    divResultsInput.appendChild(divTitle);
-                    divResultsInput.appendChild(divPrice);
-                    divResultsInput.appendChild(divAvailable);
-                    resultsList.appendChild(divResultsInput);
+                let priceProduc = document.createTextNode(info.results[k].price);
+                let pPrice = document.createElement('p');
+                pPrice.appendChild(priceProduc);
+                divPrice = document.createElement('div');
+                divPrice.appendChild(pPrice);
+
+                let pAvailable = document.createElement('p');
+                let availableProduc = document.createTextNode(info.results[k].available_quantity);
+                pAvailable.appendChild(availableProduc);
+                divAvailable = document.createElement('div');
+                divAvailable.appendChild(pAvailable);
+
+                let divButton = document.createElement('div');
+                let buttonCart = document.createElement('button');
+                buttonCart.className = 'buttonCart';
+                buttonCart.appendChild(document.createTextNode('Add to Cart'));
+                divButton.appendChild(buttonCart);
+
+                let itemNumber = document.querySelector('.item-number');
+                let WishList = document.querySelector('.WishList');
+
+                buttonCart.addEventListener('click', function () {
+
+                    let element = event.target.parentNode.parentNode.firstChild.nextSibling.firstChild.textContent;
+                    let itemNumber = document.querySelector('.item-number');
+                    let divWish = document.createElement('div');
+                    let textDivWish = document.createElement('p');
+
+                    let text = document.createTextNode(element);
+                    textDivWish.appendChild(text);
+                    divWish.appendChild(textDivWish);
+                    WishList.appendChild(divWish);
+
+
+                    let numerActual = itemNumber.textContent;
+                    let actual = parseInt(numerActual) + 1;
+                    itemNumber.innerHTML = '';
+                    itemNumber.appendChild(document.createTextNode(actual));
+                })
+
+                divResultsInput.appendChild(divImages);
+                divResultsInput.appendChild(divTitle);
+                divResultsInput.appendChild(divPrice);
+                divResultsInput.appendChild(divAvailable);
+                divResultsInput.appendChild(divButton);
+
+                resultsList.appendChild(divResultsInput);
 
 
             }

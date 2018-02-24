@@ -250,6 +250,9 @@ img[src="assets/images/shopping-cart.png"] {
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
+    -webkit-box-shadow: 10px -5px 13px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px -5px 13px -1px rgba(0,0,0,0.75);
+box-shadow: 10px -5px 13px -1px rgba(0,0,0,0.75);
 }
 
 .resultsSearchInput {
