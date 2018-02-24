@@ -223,3 +223,12 @@ a:focus, a:hover {
 img[src="assets/images/shopping-cart.png"]{
     width: 1.5em;
 }
+
+.navbarBack{
+    background-color: #faffb6 !important;
+}
+
+.navbar {
+    border-radius: 0px !important;
+}
+
