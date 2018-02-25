@@ -1,5 +1,7 @@
 /* Login Firebase */
 // Registro de nuevos usuarios*/
+let register = document.getElementById('btnCreateAccount');
+register.addEventListener('click', registrar());
 function registrar() {
   console.log('diste click en Ingresar');
   let email2 = document.getElementById('email2').value;
@@ -8,7 +10,7 @@ function registrar() {
   console.log(pwd2);
   firebase.auth().createUserWithEmailAndPassword(email2, pwd2)
     .then(function() {
-      // verificarEmail()
+      // verificarEmail() aun no se implementa
     })
     .catch(function(error) { // promesa catch, si la autentificacion no ocurre catch ejecuta funcion con parametro e, donde se guardo 2 errores en variables
       // Handle Errors here.
@@ -21,6 +23,8 @@ function registrar() {
 };
 
 // Ingreso usuarios o logueo
+let signin = document.getElementById('btnSignIn');
+register.addEventListener('click', ingresar());
 function ingresar() {
   console.log('diste click en Ingresar');
   var email = document.getElementById('email').value;
@@ -38,7 +42,33 @@ function ingresar() {
     });
 };
 
+// función que observa la sesion activa de un usuario
+// poner en menu: <li><a class="user" href="#">Bienvenido, ${user.email}</a></li> 
+function observador() {
+  // Si existe un cambio de usuario
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      console.log('Existe usuario activo');
+      var displayName = user.displayName;
+      var email = user.email;
+      // console.log('Correo verificado: ' + user.emailVerified);
+      // var emailVerified = user.photoURL;
+      var isAnonymous = user.isAnonymous;
+      var uid = user.uid;
+      var providerData = user.providerData;
+    } else {
+      // No user is signed in.
+      console.log('No existe usuario activo');
+    }
+  });
+}
+observador(); // se ejecuta cuando se carga la documento
+
+
 // Funcion para desloguearse Pendiente de terminar
+let signOut = document.getElementById('btnSignOut');
+register.addEventListener('click', cerrar());
 function cerrar() {
   firebase.auth().signOut() // Cierra sesion desde firebase, toma 2 parametros then y catch
     .then(function() { // (respuesta positiva)
@@ -50,8 +80,23 @@ function cerrar() {
     });
 }
 
+// Envía un mensaje de verificación al usuario 
+// funcion no se ha implementado aun
+function verificarEmail() {
+  var user = firebase.auth().currentUser;
+
+  user.sendEmailVerification()
+    .then(function() { // (respuesta positiva)
+      // Email sent.
+      console.log('Correo enviado con éxito'); // muestra un mensaje que 
+    }).catch(function(error) { // (respuesta negativa)
+      // An error happened.
+      console.log(error); // pinta error de verificación
+    });
+}
 /* --------------------------------------------------------------------------------------------------------------- */
 /* Inicializando Cloud Firestore */
+/* esta parte dara errores porque falta implementar al carrito de compras */
 firebase.initializeApp({
   apiKey: 'AIzaSyAmkjOzP-gCKgvNm0kEJCYWd56GcGncmss',
   authDomain: 'ecommerce-7b26c.firebaseapp.com',
